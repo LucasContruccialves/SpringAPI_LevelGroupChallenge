@@ -51,14 +51,14 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_7CE72378BE0B48EFAC628F945DB6E9FB }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_BF783BEA7C8E4B5D81D65BB50E0B41A3 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_F17D5BEACAB6487084BE8FF506B4FD61 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_B768DCC9104E4CE999F03F123C599867 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_229AA875EED843B2B1F6F803DD2C7DC3 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_1D0EAC4E7D154A028A67145475528D45 }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'Api-SalesUnity'
+          app-name: 'Api-SalesUnity2'
           slot-name: 'Production'
           
