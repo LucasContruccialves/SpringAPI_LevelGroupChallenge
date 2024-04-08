@@ -21,14 +21,18 @@ jobs:
         with:
           java-version: '21'
 
-      - name: Build with Maven
-        run: mvn clean install
+      - name: Set up Gradle
+        uses: gradle/gradle-build-action@v3    
+      
+      - name: Build with Gradle
+        run: ./gradlew build
+
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
-          name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
+          name: systemapp
+          path: '${{ github.workspace }}/build/libs/*.jar'
 
   deploy:
     runs-on: windows-latest
@@ -43,7 +47,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
-          name: java-app
+          name: systemapp
       
       - name: Login to Azure
         uses: azure/login@v1
@@ -58,5 +62,4 @@ jobs:
         with:
           app-name: 'Api-SalesUnity2'
           slot-name: 'Production'
-          package: '*.jar'
           
